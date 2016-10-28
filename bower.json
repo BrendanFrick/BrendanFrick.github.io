@@ -1,0 +1,27 @@
+{
+  "name": "BrendanFrick.github.io",
+  "homepage": "https://github.com/BrendanFrick/BrendanFrick.github.io",
+  "authors": [
+    "BrendanFrick <brendan_frick@brown.edu>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "1",
+    "font-awesome": "fontawesome#^4.7.0",
+    "bootstrap-social": "^5.0.0"
+  },
+  "resolutions": {
+    "font-awesome": "~4.5"
+  }
+}
