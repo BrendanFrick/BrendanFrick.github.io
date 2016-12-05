@@ -29,6 +29,8 @@
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -53,28 +55,51 @@
         
       </div>
     </nav>
-	
-	<section class="jumbotron text-xs-center" style="background-image: url(img/writing.jpg); height: 300px;");>
-    </section>
-
-
-	<div class="site-wrapper">
-      <div class="site-wrapper-inner">
-			<div class="cover-container">	 
-				 <div class="inner cover">
-				      <h1 class="cover-heading">In Progress</h1>
-				      <p class="lead">Currently working on PFC paper, should be uploaded in early December.
-						</p>
-				      <p class="lead">
-				        <a href="index.html" class="btn btn-lg btn-secondary">Return</a>
-				      </p>
-				 </div>
+         <div class="row" style="padding: 50px 0px 0px 0px;"> </div>
+         <div id="demo" class="collapse in">
+            <div  class="row">
+                <div class="col-md-2" style="align: left;">
+                    <a class="twitter-timeline tw-align-left" data-width="400" data-height="500" data-theme="dark" data-link-color="#2B7BB9" href="https://twitter.com/brendan_frick/lists/neuro-research">A Twitter List by brendan_frick</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="col-md-2">
+                  <h4>Trello Dashboard</h4>
+                  <form class="form-horizontal" id="boards_form">
+                    <div class="form-group">
+                      <label class="control-label">Choose your board</label>
+                        <select class="form-control" id="boards"></select>
+                    </div>
+                  </form>
+                    <div id ="labels"></div>
+                </div>  
+                <div class="col-md-2">
+                        <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23666666&amp;src=brown.edu_jgcrsavg26o4ikj5iactrfev8k%40group.calendar.google.com&amp;color=%2342104A&amp;ctz=America%2FNew_York" style="border-width:0" width="300" height="500" frameborder="0" scrolling="no"></iframe>
+                </div>
+                <div class="col-md-2">
+                    <div class="github-card" data-user="lepture" data-repo="github-cards"></div>
+                    <script src="https://cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"><h2></h2>
+				 <div class="site-wrapper">
+				  <div class="site-wrapper-inner">
+						<div class="cover-container">	 
+							 <div class="inner cover">
+								  <h3 class="cover-heading">Lorem Ipsum</h3>
+                                  <!--<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo">close header</button>-->
+                             </div>
+						</div>
+					</div>
+				</div>
 			</div>
-    	</div>
-	</div>
+        </div>
+        <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo">simple collapsible</button>
+ 
+        
    
 
-
+   
       <hr>
 
       <footer>
@@ -92,5 +117,51 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
+
+
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
+  <script src="https://api.trello.com/1/client.js?key=d5cc62c179b830c60bdce2ea47869ecc"></script>
+    
+  
+   <script type="text/javascript">
+    var loadedBoards = function(boards) {
+      $.each(boards, function(index, value) {
+        $('#boards')
+          .append($("<option></option>")
+          .attr("value",value.id)
+          .text(value.name)); 
+      });
+    };
+    var loadBoards = function() {
+      //Get the users boards
+      Trello.get(
+        '/members/me/boards/',
+        loadedBoards,
+        function() { console.log("Failed to load boards"); }
+      );
+    };
+    
+    var loadedLabels = function(labels) {
+      $.each(labels, function(index, label) {
+        var label = $("<p><span class='badge' style='background:" + label.color + ";'>" + label.uses + "</span> " + label.name + "</p>");
+        $('#labels').append(label)
+      });
+    };
+
+    $('#boards').change(function() {
+      var boardId = $("option:selected", this).val();
+      $('#labels').empty();
+      
+      Trello.get(
+        '/boards/' + boardId + '/labels',
+        loadedLabels,
+        function() { console.log("Failed to load labels"); }
+      );
+    });
+    
+    
+  </script>
+
+  
 </html>
 
