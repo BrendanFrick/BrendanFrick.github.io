@@ -76,7 +76,7 @@
                         <select class="form-control" style="color:#111111" id="boards"></select>
                     </div>
                   </form>
-                    <div id ="labels"></div>
+                    <div id ="lists"></div>
                 </div>  
                 <div class="col-md-2">
                   <h4>Github</h4>
@@ -223,20 +223,20 @@
       );
     };
     
-    var loadedLabels = function(labels) {
-      $.each(labels, function(index, label) {
-        var label = $("<p><span class='badge' style='background:" + label.color + ";'>" + label.uses + "</span> " + label.name + "</p>");
-        $('#labels').append(label)
+    var loadedlists = function(lists) {
+      $.each(lists, function(index, list) {
+        var list = $("<p>" + list.name + "</p>");
+        $('#lists').append(list)
       });
     };
     $('#boards').change(function() {
       var boardId = $("option:selected", this).val();
-      $('#labels').empty();
+      $('#lists').empty();
       
       Trello.get(
         '/boards/' + boardId + '/lists',
-        loadedLabels,
-        function() { console.log("Failed to load labels"); }
+        loadedlists,
+        function() { console.log("Failed to load lists"); }
       );
     });
     
