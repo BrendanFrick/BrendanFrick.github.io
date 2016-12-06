@@ -234,7 +234,7 @@
       $('#labels').empty();
       
       Trello.get(
-        '/boards/' + boardId + '/labels',
+        '/boards/' + boardId + '/lists',
         loadedLabels,
         function() { console.log("Failed to load labels"); }
       );
