@@ -217,15 +217,7 @@
         }
     }
 
-    $('body').popover(popOverSettings);
-    var loadedBoards = function(boards) {
-      $.each(boards, function(index, value) {
-        $('#boards')
-          .append($("<option></option>")
-          .attr("value",value.id)
-          .text(value.name)); 
-      });
-    };
+    
     var loadBoards = function() {
       //Get the users boards
       Trello.get(
@@ -264,6 +256,16 @@
       success: loadBoards,
       error: function() { console.log("Failed authentication"); }
     });
+    
+    $('body').popover(popOverSettings);
+    var loadedBoards = function(boards) {
+      $.each(boards, function(index, value) {
+        $('#boards')
+          .append($("<option></option>")
+          .attr("value",value.id)
+          .text(value.name)); 
+      });
+    };
     
 
     
