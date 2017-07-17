@@ -1,88 +1,689 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-	 
-    <title>Brendan Frick</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Introduction</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-07-17"><meta name="DC.source" content="ft_preprocessor_TUT.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
-	 <!-- Bootstrap-social core CSS -->
-	 <link href="bower_components/bootstrap-social/bootstrap-social.css" rel="stylesheet">
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
 
-	 <!-- Font-awesome core CSS -->
-	 <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
 
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-	
-	<link href="css/tutorial_cover.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
+  </style></head><body><div class="content"><h1>Introduction</h1><!--introduction--><p>The purpose of this tutorial is to provide basic commentary on our preprocessing protocol. Each case we handle is treated differently. This is an example protocol that is typical for a grid subject.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#2">Standard preprocessing in FieldTrip</a></li><li><a href="#25">Visual Inspection</a></li><li><a href="#68">Rereferencing</a></li><li><a href="#88">Wrap-up</a></li></ul></div><p>Our current protocol (07/12/2017) can be segmented into three general sections  - Standard preprocssing     - Signal processing methods that are standard across all subjects     - Includes resampling, filtering, and fieldtrip setup  - Visual inspection     - Artifact rejection, channel rejection, event rejection  - Rereferencing     - Reducing data dependencies</p><h2>Standard preprocessing in FieldTrip<a name="2"></a></h2><pre class="codeinput"><span class="comment">% Specify input and outputs for signal file</span>
+inpath = <span class="string">'0_Data/IR53/sig/IR53_raw.besa'</span>;
+outpath = <span class="string">'0_Data/IR53/sig/IR53_FT.mat'</span>;
+</pre><p><b>Resample signal</b></p><p>Most datasets come in at 5000 Hz sample rate. We downsample to 1000 Hz (saves computation time; standard for the field)</p><pre class="codeinput"><span class="comment">% Load the data into fieldtrip friendly format</span>
+cfg = [];
+cfg.dataset = inpath;
+dat = ft_preprocessing(cfg);
+</pre><pre class="codeoutput">processing channel { 'DC01' 'DC02' 'DC03' 'DC04' 'ROF1' 'ROF2' 'ROF3' 'ROF4' 'ROF5' 'ROF6' 'ROF7' 'ROF8' 'ROF9' 'ROF10' 'ROF11' 'ROF12' 'ROF13' 'ROF14' 'ROF15' 'ROF16' 'RFP1' 'RFP2' 'RFP3' 'RFP4' 'RFP5' 'RFP6' 'RFP7' 'RFP8' 'RFP9' 'RFP10' 'RFP11' 'RFP12' 'RFP13' 'RFP14' 'RFP15' 'RFP16' 'RST1' 'RST2' 'RST3' 'RST4' 'RST5' 'RST6' 'RST7' 'RST8' 'RST9' 'RST10' 'RST11' 'RST12' 'FZ' 'CZ' 'PZ' 'OZ' 'C3' 'C4' 'RUE' 'RLE' 'LUE' 'LLE' 'EKG' 'REF' 'RT1' 'RT2' 'RT3' 'RT4' 'RT5' 'RT6' 'RT7' 'RT8' 'RT9' 'RT10' 'RT11' 'RT12' 'RT13' 'RT14' 'RT15' 'RT16' 'RT17' 'RT18' 'RT19' 'RT20' 'RT21' 'RT22' 'RT23' 'RT24' 'RT25' 'RT26' 'RT27' 'RT28' 'RT29' 'RT30' 'RT31' 'RT32' }
+reading and preprocessing
+reading and preprocessing trial 1 from 1
+
+the call to "ft_preprocessing" took 4 seconds and required the additional allocation of an estimated 2610 MB
+</pre><p>Resample the data.</p><p><b>detrend</b>:</p><p>Detrend at the experiment level (now) to account for large electrode drifts that can be seen in the signal. I also think that it is important to remove drifts before any  band-filtering.</p><p><b>demean</b>:</p><p>Demean at trial level (later) so ERPs plot cleanly. I don't run many amplutude sensitive analyses so it doesn't make a huge differences for me.</p><pre class="codeinput">cfg = [];
+cfg.resamplefs = 1000;
+cfg.detrend = <span class="string">'yes'</span>;
+cfg.demean = <span class="string">'no'</span>;
+dat_res = ft_resampledata(cfg,dat);
+
+hdr = dat_res.hdr;
+hdr.Fs = 1000;
+hdr.nSamples = length(dat_res.trial{1});
+</pre><pre class="codeoutput">the input is raw data with 92 channels and 1 trials
+the call to "ft_selectdata" took 0 seconds and required the additional allocation of an estimated 0 MB
+resampling data
+resampling data in trial 1 from 1
+
+original sampling rate = 5000 Hz
+new sampling rate = 1000 Hz
+the call to "ft_resampledata" took 14 seconds and required the additional allocation of an estimated 508 MB
+</pre><p><b>Filter Data</b></p><p><b>Bandpass Filter</b>:</p><p><i>Why you shouldn't bandpass here</i></p><p>1) The processed dataset will be unusable for ERPs</p><p>2) You will obscure visual artifacts</p><p>3) You can always do it later</p><p><i>Why should you bandpass here?</i></p><p>1) You want to bandpass low frequency data for small time windows (<i>there is A LOT to consider if you are doing that analysis anyway</i>)</p><p><i>When should you bandpass?</i></p><p>Before any oscillatory analysis</p><p><i>What should you set as your bandpass?</i></p><p>[1,200 Hz] is what I'm generally comfortable with for a general bandpass. Some datasets will have high frequency noise around 100-150 Hz, if that is the case you may want to set your upper bound to a more conservative number</p><p><b>Bandstop Filter</b> (<i>aka Notch Filter</i>):</p><p>Almost every dataset has significant electrical line noise at 60, 120, 180 Hz. Applying a notch filter will remove the noise in <i>most</i> cases. If line noise persists, I I throw the channel out if I am looking ERPs or &gt;30 Hz oscillations.</p><pre class="codeinput">cfg = [];
+cfg.preproc.bpfilter = <span class="string">'no'</span>; <span class="comment">% Bandpass</span>
+cfg.preproc.bpfreq = [1 200];
+cfg.preproc.bsfilter = <span class="string">'yes'</span>; <span class="comment">% Notch</span>
+cfg.preproc.bsfreq = [58 62; 118 122; 178 182];
+dat_res_filt = ft_preprocessing(cfg,dat_res); <span class="comment">%Use resampled data</span>
+</pre><pre class="codeoutput">Warning: the trial definition in the configuration is
+inconsistent with the actual data 
+Warning: reconstructing sampleinfo by assuming that the
+trials are consecutive segments of a continuous recording 
+the call to "ft_selectdata" took 0 seconds and required the additional allocation of an estimated 522 MB
+preprocessing
+preprocessing trial 1 from 1
+
+the call to "ft_preprocessing" took 0 seconds and required the additional allocation of an estimated 522 MB
+</pre><p><b>Select channels to remove</b></p><p>Our current system is to compile notes on a spreadsheet. For some datasets (SEEG), Knight Lab will add notes to a shared file on their server. I pull that to our server and add additional notes. On that spreadsheets we mark channels to remove as well as electrode regional placements by various labelling schema (automatic, Knight Lab placements, Badre lab placement)</p><pre class="codeinput">import_loc_notes_IR53_2; <span class="comment">% function for loading .xlsx file with labels</span>
+
+rem_ind = (OutofBrain)|(Epileptic)|(Discard); <span class="comment">% labels for removed electrodes</span>
+
+rem = strcat(<span class="string">'-'</span>,Electrode(find(rem_ind)));
+keep = Electrode(find(~rem_ind));
+elec_str = union(rem,keep);
+
+cfg.channel = ft_channelselection(elec_str,hdr.label);
+</pre><h2>Visual Inspection<a name="25"></a></h2><p><b>View databrowser</b></p><p>This view mode is best for evaluating <b>ictal artifacts</b> and <b>corrupted channels</b></p><p><b>Things to look for</b></p><p>1) <b>Ictal artifacts</b></p><p>Ictal artifacts are screened by Knight Lab (usually twice). They will provide a list of artifacts that should be removed. Generally they choose to remove any electrode that is the source of the ictal event. If you want to be ultra conservative, you can remove the spread of the events as well (although usually they are considered potential source as well)</p><p><i>What to look for</i></p><p>- Sharp waveform</p><p>- Spreads across neighboring electrodes</p><p>- May occur several time on the same electrode</p><p><i>What to do</i></p><p>- Remove channel</p><p>- Remove event</p><p>2) <b>High frequency noise</b></p><p>High frequency noise usually results from a bugged electrode, environmental noise, or unusual electrode placement (out of brain, on machine, etc.).</p><p><i>What to look for</i></p><p>-Consistent 'rippling'</p><p>-High frequency power on PSDs</p><p><i>What to do</i></p><p>- Throwout electrode</p><p>-Lowpass filter (I don't do this if I plan on rereferencing later).</p><p>3) <b>Persistent line noise</b></p><p>Since we've already applied a notch filter, line noise at this point is significantly corruptive. There are more creative ways to remove line noise but at this point I tend to throw the channel out.</p><p><i>What to look for</i></p><p>- Unnatural oscillations that is <b>always</b> present (don't confuse with beta)</p><p>- PSD spikes</p><p><i>What to do</i></p><p>- Throwout electrode</p><p>- Advanced notch filters</p><pre class="codeinput"><span class="comment">% Use fieldtrip databrowser</span>
+cfg.viewmode = <span class="string">'vertical'</span>;
+cfg.ylim = [-75,75];
+new_cfg = ft_databrowser(cfg,dat_res_filt);
+</pre><pre class="codeoutput">the input is raw data with 92 channels and 1 trials
+Warning: the data has been resampled, not showing the
+events 
+detected   0 visual artifacts
+the call to "ft_databrowser" took 2 seconds and required the additional allocation of an estimated 521 MB
+</pre><p><img vspace="5" hspace="5" src="img/tut_DB.jpg" alt=""> </p><p><b>Remove eliminated channels</b></p><p>We have already removed channels that are marked in the .xlsx file; this next step removes channels that we specified using the databrowser. Note removed channels from the databrowser are not automatically reflected in the .xlsx sheet, and should be edited appropriately.</p><pre class="codeinput">vec = zeros(size(dat_res_filt.cfg.channel));
+
+<span class="keyword">for</span> cid = 1:length(new_cfg.channel);
+    vec(strmatch(new_cfg.channel{cid},dat_res_filt.cfg.channel,<span class="string">'exact'</span>)) = 1;
+<span class="keyword">end</span>
+new_mat = dat_res_filt.trial{1};
+new_mat = new_mat(find(vec),:);
+dat_res_filt.trial{1} = new_mat;
+dat_res_filt.label = new_cfg.channel;
+</pre><p><b>Segment dataset into trials</b></p><p>Trial definition is kind of a pain right now. Check out my tutorial on event encoding to see how we encode event onset times to get a better idea of why.</p><p>At this point we have a vector of event onsets time compiled by my encocder.</p><pre class="codeinput">load(<span class="string">'/home/bfrick/Documents/MATLAB/ECoG_Pipeline/0_Data/IR53/sig/IR53_raw.mat'</span>, <span class="string">'events_raw'</span>);
+</pre><p>Since our trial length we are analyzing is [-250, 500] ms I choose a conservative [-1000 1000] ms. All the time window maneuvering is done during signal processing and data analysis. No need to constrain my window at this point.</p><pre class="codeinput">pretrig    = 1;  <span class="comment">% -1000 ms</span>
+posttrig   = 1;  <span class="comment">% +1000 ms</span>
+Fs = 1000; <span class="comment">% sample rate</span>
+trl = [];
+si = [];
+
+
+<span class="keyword">for</span> lid = 1:length(events_raw)
+    new_trl  = [events_raw(lid)-pretrig*Fs,events_raw(lid)+posttrig*Fs,pretrig*Fs ]; <span class="comment">% [beginning, end, 0]</span>
+    new_si = [events_raw(lid)-pretrig*Fs,events_raw(lid)+posttrig*Fs]; <span class="comment">% [beginning, end]</span>
+    trl = [trl; new_trl];
+    si = [si;new_si];
+<span class="keyword">end</span>
+cfg = [];
+cfg.trl = trl;
+cfg.sampleinfo = si;
+cfg.trials = <span class="string">'all'</span>;
+cfg.chans = <span class="string">'all'</span>;
+
+dat_res_filt_trial = ft_redefinetrial(cfg,dat_res_filt);
+</pre><pre class="codeoutput">the input is raw data with 59 channels and 1 trials
+the call to "ft_redefinetrial" took 0 seconds and required the additional allocation of an estimated 0 MB
+</pre><p><b>Trialwise Filtering</b></p><p>Now our data is in trial format! <b>detrend</b>. The data here is already detrended. I am 90% sure that detrending here is OK and should maintain transients (I believe it is a low frequency detrender that is not sensitive to window size), but I would check the documentation <b>demean</b> I demean the signnal here so the potentials are similar across electrodes and across trials <b>bandpassfilter</b></p><pre class="codeinput">cfg = [];
+cfg.detrend = <span class="string">'no'</span>;
+cfg.demean = <span class="string">'yes'</span>;
+cfg.preproc.bpfilter = <span class="string">'no'</span>; <span class="comment">% Bandpass</span>
+cfg.preproc.bpfreq = [1 200];
+dat_trial = ft_preprocessing(cfg,dat_res_filt_trial);
+</pre><pre class="codeoutput">the call to "ft_selectdata" took 0 seconds and required the additional allocation of an estimated 0 MB
+preprocessing
+preprocessing trial 320 from 320
+
+the call to "ft_preprocessing" took 1 seconds and required the additional allocation of an estimated 0 MB
+</pre><p><b>Trialwise visual inpection</b></p><p>This is similar to the databrowser we did before but now you'll all electrodes for one trial, and then all trials for one electrode. It's much harder to see the big picture here but it is useful for deteriming rereferencing schemas and finding artifacts you might have missed.</p><p>I like to use this pass for:</p><p>1) Second and third pass for general artifacts</p><p>2) Evaluation of correlations across electrodes</p><pre class="codeinput"><span class="comment">% *View trials*</span>
+cfg = [];
+cfg.method = <span class="string">'trial'</span>;
+cfg.trials = <span class="string">'all'</span>;
+cfg.channel = ft_channelselection(elec_str,dat_res_filt_trial.label);
+cfg.keepchannel = <span class="string">'no'</span>;
+cfg.keeptrial = <span class="string">'no'</span>;
+
+dat_pass_1 = ft_rejectvisual(cfg,dat_trial);
+</pre><pre class="codeoutput">the input is raw data with 59 channels and 320 trials
+showing the data per trial, all channels at once
+trial 1 marked as GOOD
+320 trials marked as GOOD, 0 trials marked as BAD
+59 channels marked as GOOD, 0 channels marked as BAD
+the call to "ft_selectdata" took 0 seconds and required the additional allocation of an estimated 0 MB
+the call to "ft_rejectvisual" took 2 seconds and required the additional allocation of an estimated 0 MB
+</pre><p><img vspace="5" hspace="5" src="img/tut_TRI.jpg" alt=""> </p><p><b>View channels</b></p><pre class="codeinput">cfg = [];
+cfg.method  = <span class="string">'channel'</span>; <span class="comment">% browse through channels</span>
+cfg.trials = <span class="string">'all'</span>;
+cfg.channel = ft_channelselection(elec_str,dat_res_filt_trial.label);
+cfg.keepchannel = <span class="string">'no'</span>;
+cfg.keeptrial = <span class="string">'no'</span>;
+
+dat_pass_2 = ft_rejectvisual(cfg,dat_pass_1);
+</pre><pre class="codeoutput">the input is raw data with 59 channels and 320 trials
+showing the data per channel, all trials at once
+channel ROF1 marked as GOOD
+320 trials marked as GOOD, 0 trials marked as BAD
+59 channels marked as GOOD, 0 channels marked as BAD
+the call to "ft_selectdata" took 0 seconds and required the additional allocation of an estimated 0 MB
+the call to "ft_rejectvisual" took 2 seconds and required the additional allocation of an estimated 1 MB
+</pre><p><img vspace="5" hspace="5" src="img/tut_CHA.jpg" alt=""> </p><h2>Rereferencing<a name="68"></a></h2><p>Rereferencing is something we are still playing around with. I will post a tutorial on this when we have fully fleshed out some of our fringe ideas. In that tutorial I'll explain these analyses in much more detail</p><p><i>What we do</i></p><p>-For grid channels</p><p>--- Common average reference (CAR) across electrodes</p><p>- For SEEG channels</p><p>--- Bipolar referencing schema (using adjacent, same electrode, same region)</p><p><i>Why we do it</i></p><p>1) Remove single source artifacts</p><p>2) Remove conductive signalling</p><p>3) Remove external events (movement)</p><p><i>Concerns</i></p><p>1) CAR may propagate artifacts into healthy channels</p><p>-- which is why I rereference last</p><p>2) CAR does not really adress single source or conductive signalling</p><p>-- A bipolar montage poses a couple of problems for our grid cases (will  adress in rereferencing tutorial)</p><p>-- We're not confidant in other methods (PCA, etc. addressed in  rereferencing tutorial)</p><p>3) Bipolar rereferencing greatly reduces # of channels</p><p>-- necessary due to large conductance between same electrode channels</p><p>4) Bipolar creates a much larger ROI</p><p>-- necessary ...</p><pre class="codeinput">CAR_BOOL = 1; <span class="comment">% for most analyses I like to run it once with un-re-referenced data test the effect of rereferencing</span>
+dat_reref = dat_pass_2;
+<span class="keyword">if</span> CAR_BOOL
+    load(<span class="string">'0_Data/IR53/reg/simple.mat'</span>);
+    load(<span class="string">'0_Data/IR53/reg/names.mat'</span>);
+
+
+    car_reref; <span class="comment">% Rereferencing script for CAR</span>
+    dat_reref = dat_pass_2;
+    <span class="keyword">for</span> gn_id = 1:length(grid)
+        cfg = [];
+        cfg.chans = grid{gn_id};
+        cfg.reref = <span class="string">'yes'</span>;
+        cfg.refchannel = grid{gn_id};
+        dat_reref = ft_preprocessing(cfg,dat_reref);
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">the call to "ft_selectdata" took 0 seconds and required the additional allocation of an estimated 0 MB
+preprocessing
+preprocessing trial 320 from 320
+
+the call to "ft_preprocessing" took 1 seconds and required the additional allocation of an estimated 0 MB
+the call to "ft_selectdata" took 0 seconds and required the additional allocation of an estimated 0 MB
+preprocessing
+preprocessing trial 320 from 320
+
+the call to "ft_preprocessing" took 1 seconds and required the additional allocation of an estimated 0 MB
+the call to "ft_selectdata" took 0 seconds and required the additional allocation of an estimated 0 MB
+preprocessing
+preprocessing trial 320 from 320
+
+the call to "ft_preprocessing" took 1 seconds and required the additional allocation of an estimated 0 MB
+</pre><h2>Wrap-up<a name="88"></a></h2><p><b>View trials again</b></p><p>This is your final draft, make sure nothing looks odd. Rereferencing (especially CAR) will highlight bugged channels and missed artifacts. If you're not saving your removed channels and events correctly, you'll notice that here as well.</p><pre class="codeinput">cfg = [];
+cfg.method = <span class="string">'trial'</span>;
+cfg.trials = <span class="string">'all'</span>;
+cfg.channel = <span class="string">'all'</span>;
+cfg.keepchannel = <span class="string">'no'</span>;
+cfg.keeptrial = <span class="string">'no'</span>;
+
+dat_pass_temp = ft_rejectvisual(cfg,dat_reref);
+</pre><pre class="codeoutput">the input is raw data with 59 channels and 320 trials
+showing the data per trial, all channels at once
+trial 1 marked as GOOD
+320 trials marked as GOOD, 0 trials marked as BAD
+59 channels marked as GOOD, 0 channels marked as BAD
+the call to "ft_selectdata" took 0 seconds and required the additional allocation of an estimated 0 MB
+the call to "ft_rejectvisual" took 2 seconds and required the additional allocation of an estimated 2 MB
+</pre><p><b>Save it</b></p><p>Fieldtrip data formats are tricky. Any time you make a new preprocessing scipt, check your dat file here and look for inconsistencies. The dat file here will be your primary signal file for all future analyses.</p><pre class="codeinput">display([<span class="string">'Saving... '</span>,outpath])
+dat = dat_pass_temp;
+
+reg = {};
+<span class="comment">% Add region</span>
+<span class="keyword">for</span> cid = 1:length(dat.label)
+    reg{cid} = simple{strmatch(dat.label{cid},names,<span class="string">'exact'</span>)};
+<span class="keyword">end</span>
+dat.region = reg;
+save(outpath,<span class="string">'dat'</span>);
+</pre><pre class="codeoutput">Saving... 0_Data/IR53/sig/IR53_FT.mat
+</pre><p><b>Thanks!</b> email me if you have concerns or questions</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Introduction
+% The purpose of this tutorial is to provide basic commentary on our
+% preprocessing protocol. Each case we handle is treated differently. This
+% is an example protocol that is typical for a grid subject. 
+
+%%
+% Our current protocol (07/12/2017) can be segmented into three general
+% sections 
+%  - Standard preprocssing
+%     - Signal processing methods that are standard across all subjects
+%     - Includes resampling, filtering, and fieldtrip setup
+%  - Visual inspection
+%     - Artifact rejection, channel rejection, event rejection
+%  - Rereferencing
+%     - Reducing data dependencies
+
+%% Standard preprocessing in FieldTrip
+
+% Specify input and outputs for signal file
+inpath = '0_Data/IR53/sig/IR53_raw.besa';
+outpath = '0_Data/IR53/sig/IR53_FT.mat';
+
+
+
+%% 
+% *Resample signal*
+%%
+% Most datasets come in at 5000 Hz sample rate.
+% We downsample to 1000 Hz (saves computation time; standard for the field)
+
+% Load the data into fieldtrip friendly format
+cfg = [];
+cfg.dataset = inpath;
+dat = ft_preprocessing(cfg);
+%%
+% Resample the data. 
+%%
+% *detrend*:
+%% 
+% Detrend at the experiment level (now) to account for large electrode
+% drifts that can be seen in the signal. I also think that it is important
+% to remove drifts before any  band-filtering. 
+%%
+% *demean*:
+%%
+% Demean at trial level (later) so ERPs plot cleanly. I don't run
+% many amplutude sensitive analyses so it doesn't make a huge differences
+% for me.
+
+cfg = [];
+cfg.resamplefs = 1000;
+cfg.detrend = 'yes';
+cfg.demean = 'no';
+dat_res = ft_resampledata(cfg,dat);
+
+hdr = dat_res.hdr;
+hdr.Fs = 1000;
+hdr.nSamples = length(dat_res.trial{1});
+ 
+%%
+% *Filter Data*
+%%
+% *Bandpass Filter*: 
+%%
+% _Why you shouldn't bandpass here_
+%%
+% 1) The processed dataset will be unusable for ERPs
+%%
+% 2) You will obscure visual artifacts
+%%
+% 3) You can always do it later
+%
+%%
+% _Why should you bandpass here?_
+%%
+% 1) You want to bandpass low frequency data for small time windows 
+% (_there is A LOT to consider if you are doing that analysis anyway_)
+%%
+% _When should you bandpass?_
+%
+% Before any oscillatory analysis
+%%
+% _What should you set as your bandpass?_ 
+%%
+% [1,200 Hz] is what I'm generally comfortable with for a general bandpass. Some datasets will
+% have high frequency noise around 100-150 Hz, if that is the case you may
+% want to set your upper bound to a more conservative number
+%%
+% *Bandstop Filter* (_aka Notch Filter_):
+%
+%%
+% Almost every dataset has significant electrical line noise at 60, 120, 180 Hz.
+% Applying a notch filter will remove the noise in _most_ cases. If line noise persists, I
+% I throw the channel out if I am looking ERPs or >30 Hz oscillations.
+
+cfg = [];
+cfg.preproc.bpfilter = 'no'; % Bandpass
+cfg.preproc.bpfreq = [1 200];
+cfg.preproc.bsfilter = 'yes'; % Notch
+cfg.preproc.bsfreq = [58 62; 118 122; 178 182];
+dat_res_filt = ft_preprocessing(cfg,dat_res); %Use resampled data
+
+%%
+% *Select channels to remove*
+%%
+% Our current system is to compile notes on a spreadsheet. For some
+% datasets (SEEG), Knight Lab will add notes to a shared file on their
+% server. I pull that to our server and add additional notes. On that
+% spreadsheets we mark channels to remove as well as electrode regional
+% placements by various labelling schema (automatic, Knight Lab placements,
+% Badre lab placement)
+
+import_loc_notes_IR53_2; % function for loading .xlsx file with labels
+
+rem_ind = (OutofBrain)|(Epileptic)|(Discard); % labels for removed electrodes
+
+rem = strcat('-',Electrode(find(rem_ind)));
+keep = Electrode(find(~rem_ind));  
+elec_str = union(rem,keep);
+
+cfg.channel = ft_channelselection(elec_str,hdr.label);
+
+
+%% Visual Inspection
+% *View databrowser*
+%%
+% This view mode is best for evaluating *ictal artifacts* and *corrupted
+% channels*
+%%
+% *Things to look for*
+%%
+% 1) *Ictal artifacts* 
+%%
+% Ictal artifacts are screened by Knight Lab (usually twice). They will
+% provide a list of artifacts that should be removed. Generally they
+% choose to remove any electrode that is the source of the ictal event.
+% If you want to be ultra conservative, you can remove the spread of the
+% events as well (although usually they are considered potential source as well) 
+%%
+% _What to look for_
+%%
+% - Sharp waveform 
+%%
+% - Spreads across neighboring electrodes  
+%%
+% - May occur several time on the same electrode
+%%
+% _What to do_ 
+%%
+% - Remove channel
+%%
+% - Remove event
+%
+%%
+% 2) *High frequency noise*
+%%
+% High frequency noise usually results from a bugged electrode,
+% environmental noise, or unusual electrode placement (out of brain, on
+% machine, etc.). 
+%%
+% _What to look for_
+%%
+% -Consistent 'rippling' 
+%%
+% -High frequency power on PSDs
+%%
+% _What to do_
+%%
+% - Throwout electrode
+%%
+% -Lowpass filter (I don't do this if I plan on rereferencing later).
+%
+%%
+% 3) *Persistent line noise*
+%%
+% Since we've already applied a notch filter, line noise at this point
+% is significantly corruptive. There are more creative ways to remove
+% line noise but at this point I tend to throw the channel out.
+%%
+% _What to look for_
+%%
+% - Unnatural oscillations that is *always* present (don't confuse with beta)
+%%
+% - PSD spikes
+%%
+% _What to do_
+%%
+% - Throwout electrode
+%%
+% - Advanced notch filters
+
+% Use fieldtrip databrowser
+cfg.viewmode = 'vertical';
+cfg.ylim = [-75,75];
+new_cfg = ft_databrowser(cfg,dat_res_filt);
+%%
+%
+% <<tut_DB.jpg>>
+% 
+% 
+
+%%
+% *Remove eliminated channels*
+%%
+% We have already removed channels that are marked in the .xlsx file; this
+% next step removes channels that we specified using the databrowser. Note
+% removed channels from the databrowser are not automatically reflected in
+% the .xlsx sheet, and should be edited appropriately. 
+
+vec = zeros(size(dat_res_filt.cfg.channel));
+
+for cid = 1:length(new_cfg.channel);
+    vec(strmatch(new_cfg.channel{cid},dat_res_filt.cfg.channel,'exact')) = 1;
+end
+new_mat = dat_res_filt.trial{1};
+new_mat = new_mat(find(vec),:);
+dat_res_filt.trial{1} = new_mat;
+dat_res_filt.label = new_cfg.channel;
+
+%%
+% *Segment dataset into trials*
+%%
+% Trial definition is kind of a pain right now. Check out my tutorial on
+% event encoding to see how we encode event onset times to get a better
+% idea of why. 
+%
+% At this point we have a vector of event onsets time compiled by my
+% encocder. 
+
+load('/home/bfrick/Documents/MATLAB/ECoG_Pipeline/0_Data/IR53/sig/IR53_raw.mat', 'events_raw');
+
+%%
+% Since our trial length we are analyzing is [-250, 500] ms
+% I choose a conservative [-1000 1000] ms. All the time window maneuvering
+% is done during signal processing and data analysis. No need to constrain
+% my window at this point. 
+pretrig    = 1;  % -1000 ms
+posttrig   = 1;  % +1000 ms
+Fs = 1000; % sample rate
+trl = [];
+si = [];
+
+
+for lid = 1:length(events_raw)
+    new_trl  = [events_raw(lid)-pretrig*Fs,events_raw(lid)+posttrig*Fs,pretrig*Fs ]; % [beginning, end, 0]
+    new_si = [events_raw(lid)-pretrig*Fs,events_raw(lid)+posttrig*Fs]; % [beginning, end]
+    trl = [trl; new_trl]; 
+    si = [si;new_si];
+end
+cfg = [];
+cfg.trl = trl;
+cfg.sampleinfo = si;
+cfg.trials = 'all';
+cfg.chans = 'all';
+
+dat_res_filt_trial = ft_redefinetrial(cfg,dat_res_filt);
+
+%%
+% *Trialwise Filtering*
+%%
+% Now our data is in trial format! 
+% *detrend*. The data here is already detrended. I am 90% sure that
+% detrending here is OK and should maintain transients (I believe it is a low
+% frequency detrender that is not sensitive to window size), but I would
+% check the documentation
+% *demean* I demean the signnal here so the potentials are similar across electrodes
+% and across trials
+% *bandpassfilter*
+cfg = [];
+cfg.detrend = 'no';
+cfg.demean = 'yes';
+cfg.preproc.bpfilter = 'no'; % Bandpass
+cfg.preproc.bpfreq = [1 200];
+dat_trial = ft_preprocessing(cfg,dat_res_filt_trial);
+
+%%
+% *Trialwise visual inpection*
+%%
+% This is similar to the databrowser we did before but now you'll all
+% electrodes for one trial, and then all trials for one electrode. 
+% It's much harder to see the big picture here but it is useful for
+% deteriming rereferencing schemas and finding artifacts you might have
+% missed.
+%
+% I like to use this pass for:
+%%
+% 1) Second and third pass for general artifacts
+%%
+% 2) Evaluation of correlations across electrodes
+
+% *View trials*
+cfg = [];
+cfg.method = 'trial';
+cfg.trials = 'all';
+cfg.channel = ft_channelselection(elec_str,dat_res_filt_trial.label);
+cfg.keepchannel = 'no';
+cfg.keeptrial = 'no';
+
+dat_pass_1 = ft_rejectvisual(cfg,dat_trial);
+%%
+%
+% <<tut_TRI.jpg>>
+% 
+% 
+
+%%
+% *View channels*
+cfg = [];
+cfg.method  = 'channel'; % browse through channels
+cfg.trials = 'all';
+cfg.channel = ft_channelselection(elec_str,dat_res_filt_trial.label);
+cfg.keepchannel = 'no';
+cfg.keeptrial = 'no';
+
+dat_pass_2 = ft_rejectvisual(cfg,dat_pass_1);
+
+%%
+%
+% <<tut_CHA.jpg>>
+% 
+% 
+
+%% Rereferencing
+% Rereferencing is something we are still playing around with. I will post
+% a tutorial on this when we have fully fleshed out some of our fringe
+% ideas. In that tutorial I'll explain these analyses in much more detail
+
+%%
+% _What we do_
+%%
+% -For grid channels
+%%
+% REPLACE_WITH_DASH_DASH- Common average reference (CAR) across electrodes
+%%
+% - For SEEG channels
+%%
+% REPLACE_WITH_DASH_DASH- Bipolar referencing schema (using adjacent, same electrode, same region) 
+%% 
+% _Why we do it_
+%%
+% 1) Remove single source artifacts 
+%%
+% 2) Remove conductive signalling
+%%
+% 3) Remove external events (movement)
+
+%% 
+% _Concerns_
+%%
+% 1) CAR may propagate artifacts into healthy channels 
+%%
+% REPLACE_WITH_DASH_DASH which is why I rereference last
+%%
+% 2) CAR does not really adress single source or conductive signalling
+%%
+% REPLACE_WITH_DASH_DASH A bipolar montage poses a couple of problems for our grid cases (will
+%  adress in rereferencing tutorial)
+%%
+% REPLACE_WITH_DASH_DASH We're not confidant in other methods (PCA, etc. addressed in
+%  rereferencing tutorial)
+%%
+% 3) Bipolar rereferencing greatly reduces # of channels
+%%
+% REPLACE_WITH_DASH_DASH necessary due to large conductance between same electrode channels
+%%
+% 4) Bipolar creates a much larger ROI 
+%%
+% REPLACE_WITH_DASH_DASH necessary ...
+
+CAR_BOOL = 1; % for most analyses I like to run it once with un-re-referenced data test the effect of rereferencing
+dat_reref = dat_pass_2;
+if CAR_BOOL
+    load('0_Data/IR53/reg/simple.mat');
+    load('0_Data/IR53/reg/names.mat');
+
     
-  </head>
+    car_reref; % Rereferencing script for CAR
+    dat_reref = dat_pass_2;
+    for gn_id = 1:length(grid)
+        cfg = [];
+        cfg.chans = grid{gn_id};
+        cfg.reref = 'yes'; 
+        cfg.refchannel = grid{gn_id};
+        dat_reref = ft_preprocessing(cfg,dat_reref);
+    end
+end
 
-  <body>
+%% Wrap-up
+% *View trials again*
+%% 
+% This is your final draft, make sure nothing looks odd.
+% Rereferencing (especially CAR) will highlight bugged channels and missed
+% artifacts. If you're not saving your removed channels and events
+% correctly, you'll notice that here as well.
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html">Home</a>
-        </div>
-        </div>
-    </nav>
-      
-	<style type="text/css">
-		@font-face {
-			 font-family: "My Custom Font";
-			 src: url(fonts/TENOCLOCK-Regular.ttf) format("truetype");
-		}
+cfg = [];
+cfg.method = 'trial';
+cfg.trials = 'all';
+cfg.channel = 'all';
+cfg.keepchannel = 'no';
+cfg.keeptrial = 'no';
 
-		t {
-			 display: inline;
-			 margin-top: 0;
-			 margin-bottom:0;
-			 margin-left: 0;
-			 margin-right: 0;
-			 font-size: 32px;
-		}	
-		
-		t.customfont { 
-			 font-family: "My Custom Font", Verdana, Tahoma;
-		}
-	</style>
+dat_pass_temp = ft_rejectvisual(cfg,dat_reref);
+%% 
+% *Save it*
+%%
+% Fieldtrip data formats are tricky. Any time you make a new preprocessing
+% scipt, check your dat file here and look for inconsistencies. The dat
+% file here will be your primary signal file for all future analyses.
 
-	<div style="padding: 100px 10px 10px 10px;">
-	  
-	</div>
+display(['Saving... ',outpath])
+dat = dat_pass_temp;
 
-    <footer>
-        <p>&copy; 2016 Brendan Frick</p>
-    </footer>
-
-  </body>
-</html>
-
-'
+reg = {};
+% Add region
+for cid = 1:length(dat.label)
+    reg{cid} = simple{strmatch(dat.label{cid},names,'exact')};
+end
+dat.region = reg;
+save(outpath,'dat');
+%%
+% *Thanks!*
+% email me if you have concerns or questions
+##### SOURCE END #####
+--></body></html>
