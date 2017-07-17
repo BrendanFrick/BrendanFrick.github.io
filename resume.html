@@ -19,6 +19,12 @@
     <!-- Custom styles for this template -->
     <link href="css/carousel.css" rel="stylesheet">
     <link href="css/resume.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    <script> 
+    $(function(){
+      $("#includedContent").load("cv.html"); 
+    });
+    </script>
 	
   </head>
 
@@ -190,9 +196,10 @@
 						<div class="cover-container">	 
 							 <div class="inner cover" style="text-align:left;">
 								  <h3 class="cover-heading">MATLAB</h3>
-								  <p class="lead" style=>
-										</p>
-							 </div>
+								  
+								   <div id = "includedContent"></div>
+								  
+						     </div>
 						</div>
 					</div>
 				</div>
