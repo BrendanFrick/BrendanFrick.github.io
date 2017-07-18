@@ -381,3 +381,33 @@ body {
             right: auto;
         }
 }
+
+/*Change the size here*/
+div.tooltip-inner {
+    text-align: left;
+    white-space:pre-wrap;
+}
+/*Tooltip stuff
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+*/
