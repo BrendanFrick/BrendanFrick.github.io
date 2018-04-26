@@ -7,7 +7,10 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <!--<link rel="icon" href="../../favicon.ico">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	 
     <title>Brendan Frick</title>
 
@@ -19,7 +22,10 @@
 
 	 <!-- Font-awesome core CSS -->
 	 <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-
+	 
+    <!-- Carousel-->
+    <link rel="stylesheet" href="css/carousel.css">
+    
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -74,7 +80,8 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
 	<div class="jumbotron" style="background-image: url(img/home.png);">
-      <div class="container">		
+      <div class="row">	
+		  <div class="col-md-6">
 			<div class="container">	
 				<h1 style="color: #111111; text-shadow:
 							 -1px -1px 0 #DDDDDD,
@@ -98,8 +105,11 @@
 					<a class="btn btn-social-icon btn-openid" href="http://stackoverflow.com/users/7101727/brendan-frick?tab=profile">
 						<span class="fa fa-stack-overflow"></span>
 					</a>
-					<a class="btn btn-social-icon btn-reddit" href="mailto:Brendan_Frick@brown.edu">
+					<a class="btn btn-social-icon btn-reddit" href="mailto:BrendanFrick813@brown.edu">
 						<span class="fa fa-envelope-o fa-fw"></span>
+					</a>
+					<a class="btn btn-social-icon btn-reddit" href="BrendanFrick_Resume_04_25.pdf" download>
+						<span class="fa fa-file-o fa-fw"></span>
 					</a>
 				</p>				
 				<h2 style="color: #DDDDDD; text-shadow:
@@ -110,6 +120,8 @@
 					<t class="customfont"><b>Signals and stuff.</b></t>
 				</h2>
 			</div>
+		</div>
+		
       </div>
     </div>
     <div class="container">
@@ -126,84 +138,89 @@
           <p><a class="btn btn-default" href="resume.html" role="button">View details &raquo;</a></p>
         </div>
       </div>
-      <div class="row">
-		<h2>Featured Projects</h2>
-        <div class="col-md-2">
-			<div class="card">
-				<div class="card-header">
-					<h5>Data Pipelines</h5>
-				</div>
-				<img class="card-img-top"src="img/pipe.png" style="max-width: 100%;
-		max-height: 100%;"></img>
-				 <div class="card-body">
-					<p class="card-text">Ingestion, processing, analysis, and visualization of electrophysiological neuroscience data.</p>
-				</div>
-			</div>
-		</div>
-        <div class="col-md-2">
-		  <div class="card">
-				<div class="card-header">
-					<h5>Oscillatory Burst Analysis</h5>
-				</div>
-				<img class="card-img-top"src="img/burst.png" style="max-width: 100%;
-		max-height: 100%;"></img>
-				 <div class="card-body">
-					<p class="card-text">Novel analysis to better understand the dynamic functions underlying working memory and decision making.</p>
-				</div>
-			</div>
-        </div>
-        <div class="col-md-2">
-		  <div class="card">
-				<div class="card-header">
-					<h5>Bayesian Predictions for Youtube Channel Success</h5>
-				</div>
-				<img class="card-img-top"src="img/YT.png" style="max-width: 100%;
-		max-height: 100%;"></img>
-				 <div class="card-body">
-					<p class="card-text">Work in progress. Applying CLV methods to aggregated social media data.</p>
-				</div>
-			</div>
-        </div>
-        <div class="col-md-2">
-		  <div class="card">
-				<div class="card-header">
-					<h5>Bottom-up Object Recognition Model</h5>
-				</div>
-				<img  class="card-img-top" src="img/OR.png" style="max-width: 100%;
-    max-height: 100%;"></img>
-				 <div class="card-body">
-					<p class="card-text">Target-relevancy model using only low-level relevancy features in primate search task.</p>
-				</div>
-			</div>
-        </div>
-        <div class="col-md-2">
-		  <div class="card">
-				<div class="card-header">
-					<h5>ABM for Single Cell Action Potential</h5>
-				</div>
-				<img class="card-img-top"src="http://modelingcommons.org/browse/display_preview/4419" style="max-width: 80%;
-		max-height: 80%;" align="middle"></img>
-				 <div class="card-body">
-					<p class="card-text">Agent Based  for pyramidal action potentials demonstrating the dynamics of voltage-gated ion channels.</p>
-				</div>
-			</div>
-        </div>    
-		<div class="col-md-2">
-		  <div class="card">
-				<div class="card-header">
-					<h5>Various ML/AI applications</h5>
-				</div>
-				<img  class="card-img-top" src="img/project_thumb.png" style="max-width: 100%;
-    max-height: 100%;"></img>
-				 <div class="card-body">
-					<p class="card-text">Game solvers, OR models, VLSI solvers, etc.</p>
-				</div>
-			</div>
-        </div>
-        
-      </div>
-	  
+	  <!--CAROUSEL--->
+	  <br>
+	  <div class="row">
+		  <h2>Featured Projects</h2>
+		  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+		  <!-- Indicators -->
+			  <ol class="carousel-indicators">
+				  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				  <li data-target="#myCarousel" data-slide-to="1"></li>
+				  <li data-target="#myCarousel" data-slide-to="2"></li>
+				  <li data-target="#myCarousel" data-slide-to="3"></li>
+				  <li data-target="#myCarousel" data-slide-to="4"></li>
+				  <li data-target="#myCarousel" data-slide-to="5"></li>
+			  </ol>
+		  
+		  <!-- Wrapper for slides -->
+			<div class="carousel-inner">
+				  <div class="item active" align="middle" style="height:300px">
+					<img src="img/pipe.png" alt="Data Pipelines" align="middle" style="max-width: 100%;
+				max-height: 100%;">
+				    <a class="carousel-caption" href="https://github.com/BrendanFrick/ECoG_Pipeline">
+						<h4>Data Pipelines</h4>
+						<p>Ingestion, processing, analysis, and visualization of electrophysiological neuroscience data.</p>
+				    </a>
+				  </div>
+				  
+				  <div class="item" align="middle" style="height:300px">
+					<img src="img/burst.png" alt="Burst Analysis" align="middle" style="max-width: 100%; max-height: 100%;">
+					<a class="carousel-caption" href="img/SFN.pdf">
+						<h4>Oscillatory Burst Analysis</h4>
+						<p>Novel analysis to better understand the dynamic functions underlying working memory and decision making.</p>
+				    </a>
 
+				  </div>
+			  
+				  <div class="item" align="middle" style="height:300px">
+					<img src="img/YT.png" alt="Youtube" align="middle" style="max-width: 100%; max-height: 100%;">
+					<a class="carousel-caption" href="yt.html">
+						<h4>Bayesian Predictions for Youtube Channel Success</h4>
+						<p>Work in progress. Applying CLV methods to aggregated social media data.</p>
+				    </a>
+				  </div>
+				  
+				  <div class="item" align="middle" style="height:300px">
+					<img src="img/OR.png" alt="Object Recognition Model" align="middle" style="max-width: 100%;
+				max-height: 100%;">
+				    <a class="carousel-caption" href="https://github.com/brendanfrick2016/Ghost-Target">
+						<h4>Bottom-up Object Recognition Model</h4>
+						<p>Target-relevancy model using only low-level relevancy features in primate search task.</p>
+				    </a>
+				  </div>
+				  
+				  <div class="item" align="middle" style="height:300px">
+					<img src="http://modelingcommons.org/browse/display_preview/4419" alt="ABM Neuron" align="middle" style="max-width: 100%; max-height: 100%;">
+					<a class="carousel-caption" href="Neuron_Model.html">
+						<h4>ABM for Single Cell Action Potential</h4>
+						<p>Agent Based model  for pyramidal action potentials demonstrating the dynamics of voltage-gated ion channels.</p>
+				    </a>
+
+				  </div>
+			  
+				  <div class="item" align="middle" style="height:300px">
+					<img src="img/git_logo.png" alt="etc" align="middle" style="max-width: 100%; max-height: 100%;">
+					<a class="carousel-caption" href="https://github.com/brendanfrick2016/">
+						<h4>Various ML/AI applications</h4>
+						<p>Game solvers, OR models, VLSI solvers, etc.</p>
+				    </a>
+				  </div>
+			</div>
+		  
+		  <!-- Left and right controls -->
+			  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+				  <span class="glyphicon glyphicon-chevron-left"></span>
+				  <span class="sr-only">Previous</span>
+			  </a>
+			  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+				  <span class="glyphicon glyphicon-chevron-right"></span>
+				  <span class="sr-only">Next</span>
+			  </a>
+		  </div>
+      </div>
+			  
+     
 
       <hr>
 
@@ -216,9 +233,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
+    
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
